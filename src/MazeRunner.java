@@ -35,7 +35,7 @@ public class MazeRunner{
         System.out.print("Which direction you want to move?(R, L, U, D) ");
         String userMove = input.nextLine();
 
-        while (userMove.matches("[A-Z&&[^RLUD]]")) {
+        while (userMove.matches("[^(R|r|L|l|U|u|D|d)]")) {
             System.out.print("Enter a valid input to move. Which direction you want to move?(R, L, U, D) ");
             userMove = input.nextLine();
         }
@@ -101,6 +101,22 @@ public class MazeRunner{
                 myMap.jumpOverPit("D");
                 myMap.printMap();
             }else userMover(myMap);
+
+        }else if (userMove.equalsIgnoreCase("R") && myMap.isThereAPit("R") == false )//if there is a wall
+        {
+            System.out.println("Watch out there's a wall ahead, change direction");
+            userMover(myMap);
+
+        }else if (userMove.equalsIgnoreCase("L") && myMap.isThereAPit("L") == false ){
+            userMover(myMap);
+
+        }else if (userMove.equalsIgnoreCase("U") && myMap.isThereAPit("U") == false ){
+            System.out.println("Watch out there's a wall ahead, change direction");
+            userMover(myMap);
+
+        }else if (userMove.equalsIgnoreCase("D") && myMap.isThereAPit("D") == false ){
+            System.out.println("Watch out there's a wall ahead, change direction");
+            userMover(myMap);
 
         }
     }
